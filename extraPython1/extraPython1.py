@@ -1,4 +1,5 @@
 from random import randint
+opc = 1
 i = 1
 g = 0
 p = 0
@@ -7,14 +8,22 @@ if start == "s":
     while i < 6:
         print("")
         print("Empieza la ronda número: "+ str(i))
-        jugada=str(input("Elije una jugada(piedra, papel, tijera):"))
-        n =int(randint(1,3))
-        if n== 1:
-            jugadaR="piedra"
-        elif n == 2:
-            jugadaR="papel"
-        elif n == 3:
-            jugadaR="tijera"
+        for opc in range(1):
+            jugada=str(input("Elije una jugada(piedra, papel, tijera):"))
+            n =int(randint(1,3))
+            if n== 1:
+                jugadaR="piedra"
+                opc = opc + 1
+            elif n == 2:
+                jugadaR="papel"
+                opc = opc + 1
+            elif n == 3:
+                jugadaR="tijera"
+                opc= opc + 1
+            else:
+                print("Eso no sirve :(, vuelve a elegir.")
+                
+            
         
         if jugada == jugadaR:
                 print("Empate, esta ronda no cuenta.")
@@ -49,7 +58,15 @@ if start == "s":
                 i = i +1
 
     print("")
-    print("Has ganado: "+ str(g) + " veces y has perdido " + str(p) + " veces.")
+    if g> 1 and p > 1:
+        print("Has ganado "+ str(g) + " veces y has perdido " + str(p) + " veces.")
+    
+    if g == 1:
+        print("Has ganado "+ str(g) + " vez y has perdido " + str(p) + " veces.")
+    
+    if p == 1:
+        print("Has ganado "+ str(g) + " vez y has perdido " + str(p) + " veces.")
+         
     if g > p:
         print("Por lo tanto... ¡¡¡ENHORABUENA!!!, has ganado el juego.")
     else:
